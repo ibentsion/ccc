@@ -1,8 +1,14 @@
 {
-  "granularity": "standard",
-  "mode": "interactive",
-  "researcher_model": "sonnet",
-  "synthesizer_model": "sonnet",
-  "roadmapper_model": "sonnet",
-  "commit_docs": true
+  "mode": "yolo",
+  "granularity": "coarse",
+  "parallelization": true,
+  "commit_docs": true,
+  "model_profile": "balanced",
+  "workflow": {
+    "research": false,
+    "plan_check": true,
+    "verifier": true,
+    "nyquist_validation": false,
+    "auto_advance": false
+  }
 }
