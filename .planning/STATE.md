@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-qlora-training-scaffold/02-01-PLAN.md (TrainingConfig + TokenizedCollator)
-last_updated: "2026-03-29T20:28:57.835Z"
-last_activity: 2026-03-29
+stopped_at: Completed 01-data-pipeline/01-03-PLAN.md (CurriculumDataModule + FIMDataset + HybridReplayDataset)
+last_updated: "2026-03-29T20:26:08.799Z"
+last_activity: 2026-03-29 -- Phase 02 execution started
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 6
-  completed_plans: 4
+  completed_plans: 3
   percent: 10
 ---
 
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-29)
 
 **Core value:** A reproducible training pipeline that produces a curriculum-trained model capable of filling in missing Python lines, with each training stage fully logged in ClearML for experiment comparison.
-**Current focus:** Phase 1 — Data Pipeline
+**Current focus:** Phase 02 — QLoRA Training Scaffold
 
 ## Current Position
 
-Phase: 2 of 4 (qlora training scaffold)
-Plan: Not started
-Status: Ready to execute
-Last activity: 2026-03-29
+Phase: 02 (QLoRA Training Scaffold) — EXECUTING
+Plan: 1 of 3
+Status: Executing Phase 02
+Last activity: 2026-03-29 -- Phase 02 execution started
 
 Progress: [█░░░░░░░░░] 10%
 
@@ -53,7 +53,6 @@ Progress: [█░░░░░░░░░] 10%
 
 *Updated after each plan completion*
 | Phase 01-data-pipeline P03 | 22 | 2 tasks | 3 files |
-| Phase 02-qlora-training-scaffold P01 | 5 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -65,9 +64,6 @@ Progress: [█░░░░░░░░░] 10%
 - [Phase 01-data-pipeline]: 01-03: Code is in output field (not input) of JSONL; added _extract_code() to strip markdown fences
 - [Phase 01-data-pipeline]: 01-03: idx%4==0 deterministic replay routing (25% prior, 75% current) avoids runtime RNG in HybridReplayDataset
 - [Phase 01-data-pipeline]: 01-03: _collate_fn returns plain Python lists (not tensors); tokenization deferred to Phase 2 training loop
-- [Phase 02-qlora-training-scaffold]: 02-01: bnb_4bit_compute_dtype stored as string to avoid top-level torch import in config.py
-- [Phase 02-qlora-training-scaffold]: 02-01: Left-padding used for decoder-only batching (padding_side=left)
-- [Phase 02-qlora-training-scaffold]: 02-01: Prompt masking: mask pad_len + len(prefix_ids) positions; middle tokens retain real label values
 
 ### Pending Todos
 
@@ -82,6 +78,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29T20:28:57.828Z
-Stopped at: Completed 02-qlora-training-scaffold/02-01-PLAN.md (TrainingConfig + TokenizedCollator)
+Last session: 2026-03-29T10:59:36.243Z
+Stopped at: Completed 01-data-pipeline/01-03-PLAN.md (CurriculumDataModule + FIMDataset + HybridReplayDataset)
 Resume file: None
