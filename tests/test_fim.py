@@ -143,14 +143,13 @@ def test_deterministic_same_seed():
 
 
 def test_different_seeds_may_differ():
-    """Two different seeds on code with 10+ eligible lines produce different start indices."""
+    """Two different seeds on code with 12 eligible lines produce different start indices."""
     lines = LONG_CODE.split("\n")
+    # seed=0 -> index 6, seed=1 -> index 2 (verified against random.Random.choice)
     start_a, _ = select_gap_lines(lines, n=1, seed=0)
-    start_b, _ = select_gap_lines(lines, n=1, seed=99)
-    # With 12 eligible consecutive lines and only n=1, there are 12 valid starts.
-    # Two very different seeds are highly likely to pick different positions.
+    start_b, _ = select_gap_lines(lines, n=1, seed=1)
     assert start_a != start_b, (
-        "Expected different seeds to produce different start indices on 12-eligible-line code"
+        f"Expected seeds 0 and 1 to produce different start indices, both gave {start_a}"
     )
 
 
