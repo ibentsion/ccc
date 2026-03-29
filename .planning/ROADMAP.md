@@ -28,7 +28,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. A sample batch can be inspected and every item has the correct PSM FIM token structure: `<｜fim▁begin｜>{prefix}<｜fim▁hole｜>{suffix}<｜fim▁end｜>`
   3. DataLoaders for any curriculum stage N can be constructed and yield batches mixing 75% current-stage and 25% prior-stage samples
   4. Gap size N is configurable per stage and the masking excludes function signatures, class definitions, and trivially-empty lines
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — JSONL loader, deterministic train/val/test splitter, shared config dataclasses
+- [ ] 01-02-PLAN.md — FIM gap creator: select N eligible lines, format as PSM tokens
+- [ ] 01-03-PLAN.md — CurriculumDataModule: Lightning DataModule with per-stage hybrid replay DataLoaders
 
 ### Phase 2: QLoRA Training Scaffold
 **Goal**: A single curriculum stage (1-line gaps) trains to completion with loss logged in ClearML, adapter saved to disk, and no silent integration failures
@@ -68,7 +73,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Data Pipeline | 0/TBD | Not started | - |
+| 1. Data Pipeline | 0/3 | Not started | - |
 | 2. QLoRA Training Scaffold | 0/TBD | Not started | - |
 | 3. Curriculum Training Loop | 0/TBD | Not started | - |
 | 4. Evaluation | 0/TBD | Not started | - |
