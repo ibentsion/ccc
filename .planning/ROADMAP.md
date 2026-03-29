@@ -31,7 +31,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — JSONL loader, deterministic train/val/test splitter, shared config dataclasses
+- [x] 01-01-PLAN.md — JSONL loader, deterministic train/val/test splitter, shared config dataclasses
 - [ ] 01-02-PLAN.md — FIM gap creator: select N eligible lines, format as PSM tokens
 - [ ] 01-03-PLAN.md — CurriculumDataModule: Lightning DataModule with per-stage hybrid replay DataLoaders
 
@@ -73,7 +73,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Data Pipeline | 0/3 | Planned    |  |
+| 1. Data Pipeline | 1/3 | In progress | - |
 | 2. QLoRA Training Scaffold | 0/TBD | Not started | - |
 | 3. Curriculum Training Loop | 0/TBD | Not started | - |
 | 4. Evaluation | 0/TBD | Not started | - |

@@ -1,19 +1,3 @@
----
-gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: executing
-stopped_at: Completed 01-data-pipeline 01-02-PLAN.md (FIM gap creation)
-last_updated: "2026-03-29T10:33:28.277Z"
-last_activity: 2026-03-29
-progress:
-  total_phases: 4
-  completed_phases: 0
-  total_plans: 3
-  completed_plans: 0
-  percent: 0
----
-
 # Project State
 
 ## Project Reference
@@ -21,46 +5,43 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-29)
 
 **Core value:** A reproducible training pipeline that produces a curriculum-trained model capable of filling in missing Python lines, with each training stage fully logged in ClearML for experiment comparison.
-**Current focus:** Phase 01 — data-pipeline
+**Current focus:** Phase 1 — Data Pipeline
 
 ## Current Position
 
-Phase: 01 (data-pipeline) — EXECUTING
-Plan: 2 of 3
-Status: Ready to execute
-Last activity: 2026-03-29
+Phase: 1 of 4 (Data Pipeline)
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-03-29 — Completed plan 01-01: JSONL loader and deterministic splits
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 10%
 
 ## Performance Metrics
 
 **Velocity:**
-
-- Total plans completed: 0
-- Average duration: —
-- Total execution time: —
+- Total plans completed: 1
+- Average duration: 3 min
+- Total execution time: 3 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-data-pipeline | 1 | 3 min | 3 min |
 
 **Recent Trend:**
-
-- Last 5 plans: —
+- Last 5 plans: 01-01 (3 min)
 - Trend: —
 
 *Updated after each plan completion*
-| Phase 01-data-pipeline P02 | 4min | 1 tasks | 4 files |
 
 ## Accumulated Context
 
 ### Decisions
 
-- [Phase 01-data-pipeline]: PSM (not SPM) FIM format confirmed for DeepSeek-Coder; FIM_BEGIN/FIM_HOLE/FIM_END/EOT token constants locked
-- [Phase 01-data-pipeline]: Exclusion rules for FIM gaps: def/class/blank/comment lines are ineligible — protects training signal quality
-- [Phase 01-data-pipeline]: Run detection algorithm used for select_gap_lines — handles sparse eligible line distributions correctly
+- 01-01: Used random.Random(seed).shuffle on a copy of records for isolated, deterministic splits per call
+- 01-01: Python stdlib only for core logic (json, random, dataclasses backport); no external runtime deps
+- 01-01: Remainder records go to test set so train+val+test == len(records) with int rounding
 
 ### Pending Todos
 
@@ -75,6 +56,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29T10:33:28.271Z
-Stopped at: Completed 01-data-pipeline 01-02-PLAN.md (FIM gap creation)
+Last session: 2026-03-29
+Stopped at: Completed 01-data-pipeline/01-01-PLAN.md (JSONL loader + splits)
 Resume file: None
