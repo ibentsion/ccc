@@ -1,0 +1,8 @@
+{
+  "granularity": "standard",
+  "mode": "interactive",
+  "researcher_model": "sonnet",
+  "synthesizer_model": "sonnet",
+  "roadmapper_model": "sonnet",
+  "commit_docs": true
+}
