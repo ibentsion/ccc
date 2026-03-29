@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-03-29)
 ## Current Position
 
 Phase: 1 of 4 (Data Pipeline)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-03-29 — Roadmap created, requirements mapped to 4 phases
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-03-29 — Completed plan 01-01: JSONL loader and deterministic splits
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 10%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: —
-- Total execution time: —
+- Total plans completed: 1
+- Average duration: 3 min
+- Total execution time: 3 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-data-pipeline | 1 | 3 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: —
+- Last 5 plans: 01-01 (3 min)
 - Trend: —
 
 *Updated after each plan completion*
@@ -39,7 +39,9 @@ Progress: [░░░░░░░░░░] 0%
 
 ### Decisions
 
-None yet.
+- 01-01: Used random.Random(seed).shuffle on a copy of records for isolated, deterministic splits per call
+- 01-01: Python stdlib only for core logic (json, random, dataclasses backport); no external runtime deps
+- 01-01: Remainder records go to test set so train+val+test == len(records) with int rounding
 
 ### Pending Todos
 
@@ -55,5 +57,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-29
-Stopped at: Roadmap and STATE created; no plans exist yet
+Stopped at: Completed 01-data-pipeline/01-01-PLAN.md (JSONL loader + splits)
 Resume file: None

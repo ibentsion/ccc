@@ -7,10 +7,10 @@
 
 ### Data Pipeline
 
-- [ ] **DATA-01**: Pipeline loads JSONL file (instruction/input/output format) and splits into train/validation/test sets with configurable ratios
+- [x] **DATA-01**: Pipeline loads JSONL file (instruction/input/output format) and splits into train/validation/test sets with configurable ratios
 - [ ] **DATA-02**: Pipeline creates FIM-format training pairs by masking N consecutive lines from complete code samples, using DeepSeek-Coder PSM tokens (`<｜fim▁begin｜>`, `<｜fim▁hole｜>`, `<｜fim▁end｜>`)
 - [ ] **DATA-03**: Dataset supports configurable gap size N (number of consecutive lines to mask) per curriculum stage
-- [ ] **DATA-04**: Gap selection is deterministic given a seed (reproducible splits and masking)
+- [x] **DATA-04**: Gap selection is deterministic given a seed (reproducible splits and masking)
 - [ ] **DATA-05**: DataModule exposes per-stage DataLoaders with hybrid replay (75% current-stage, 25% prior-stage samples)
 
 ### Training
@@ -70,10 +70,10 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DATA-01 | Phase 1 | Pending |
+| DATA-01 | Phase 1 | Complete |
 | DATA-02 | Phase 1 | Pending |
 | DATA-03 | Phase 1 | Pending |
-| DATA-04 | Phase 1 | Pending |
+| DATA-04 | Phase 1 | Complete |
 | DATA-05 | Phase 1 | Pending |
 | TRAIN-01 | Phase 2 | Pending |
 | TRAIN-02 | Phase 2 | Pending |
