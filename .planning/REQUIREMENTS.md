@@ -11,7 +11,7 @@
 - [ ] **DATA-02**: Pipeline creates FIM-format training pairs by masking N consecutive lines from complete code samples, using DeepSeek-Coder PSM tokens (`<｜fim▁begin｜>`, `<｜fim▁hole｜>`, `<｜fim▁end｜>`)
 - [ ] **DATA-03**: Dataset supports configurable gap size N (number of consecutive lines to mask) per curriculum stage
 - [x] **DATA-04**: Gap selection is deterministic given a seed (reproducible splits and masking)
-- [ ] **DATA-05**: DataModule exposes per-stage DataLoaders with hybrid replay (75% current-stage, 25% prior-stage samples)
+- [x] **DATA-05**: DataModule exposes per-stage DataLoaders with hybrid replay (75% current-stage, 25% prior-stage samples)
 
 ### Training
 
@@ -74,7 +74,7 @@
 | DATA-02 | Phase 1 | Pending |
 | DATA-03 | Phase 1 | Pending |
 | DATA-04 | Phase 1 | Complete |
-| DATA-05 | Phase 1 | Pending |
+| DATA-05 | Phase 1 | Complete |
 | TRAIN-01 | Phase 2 | Pending |
 | TRAIN-02 | Phase 2 | Pending |
 | TRAIN-03 | Phase 2 | Pending |

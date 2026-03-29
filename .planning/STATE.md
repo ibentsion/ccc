@@ -1,3 +1,19 @@
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: executing
+stopped_at: Completed 01-data-pipeline/01-03-PLAN.md (CurriculumDataModule + FIMDataset + HybridReplayDataset)
+last_updated: "2026-03-29T20:06:45.711Z"
+last_activity: 2026-03-29
+progress:
+  total_phases: 4
+  completed_phases: 1
+  total_plans: 3
+  completed_plans: 3
+  percent: 10
+---
+
 # Project State
 
 ## Project Reference
@@ -9,16 +25,17 @@ See: .planning/PROJECT.md (updated 2026-03-29)
 
 ## Current Position
 
-Phase: 1 of 4 (Data Pipeline)
-Plan: 1 of 3 in current phase
-Status: In progress
-Last activity: 2026-03-29 — Completed plan 01-01: JSONL loader and deterministic splits
+Phase: 2 of 4 (qlora training scaffold)
+Plan: Not started
+Status: Ready to execute
+Last activity: 2026-03-29
 
 Progress: [█░░░░░░░░░] 10%
 
 ## Performance Metrics
 
 **Velocity:**
+
 - Total plans completed: 1
 - Average duration: 3 min
 - Total execution time: 3 min
@@ -30,10 +47,12 @@ Progress: [█░░░░░░░░░] 10%
 | 01-data-pipeline | 1 | 3 min | 3 min |
 
 **Recent Trend:**
+
 - Last 5 plans: 01-01 (3 min)
 - Trend: —
 
 *Updated after each plan completion*
+| Phase 01-data-pipeline P03 | 22 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -42,6 +61,9 @@ Progress: [█░░░░░░░░░] 10%
 - 01-01: Used random.Random(seed).shuffle on a copy of records for isolated, deterministic splits per call
 - 01-01: Python stdlib only for core logic (json, random, dataclasses backport); no external runtime deps
 - 01-01: Remainder records go to test set so train+val+test == len(records) with int rounding
+- [Phase 01-data-pipeline]: 01-03: Code is in output field (not input) of JSONL; added _extract_code() to strip markdown fences
+- [Phase 01-data-pipeline]: 01-03: idx%4==0 deterministic replay routing (25% prior, 75% current) avoids runtime RNG in HybridReplayDataset
+- [Phase 01-data-pipeline]: 01-03: _collate_fn returns plain Python lists (not tensors); tokenization deferred to Phase 2 training loop
 
 ### Pending Todos
 
@@ -56,6 +78,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29
-Stopped at: Completed 01-data-pipeline/01-01-PLAN.md (JSONL loader + splits)
+Last session: 2026-03-29T10:59:36.243Z
+Stopped at: Completed 01-data-pipeline/01-03-PLAN.md (CurriculumDataModule + FIMDataset + HybridReplayDataset)
 Resume file: None
