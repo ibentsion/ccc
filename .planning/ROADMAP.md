@@ -47,7 +47,7 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Training config dataclass + tokenizer with prompt masking (labels=-100 on non-middle tokens)
+- [x] 02-01-PLAN.md — Training config dataclass + tokenizer with prompt masking (labels=-100 on non-middle tokens)
 - [ ] 02-02-PLAN.md — QLoRA LightningModule: 3-step init, PagedAdamW32bit, ConstantLR, PEFT adapter save
 - [ ] 02-03-PLAN.md — Training entry point with ClearML Task.init, TensorBoardLogger, artifact upload
 
@@ -79,6 +79,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Data Pipeline | 1/3 | In progress | - |
-| 2. QLoRA Training Scaffold | 0/3 | Not started | - |
+| 2. QLoRA Training Scaffold | 1/3 | In Progress|  |
 | 3. Curriculum Training Loop | 0/TBD | Not started | - |
 | 4. Evaluation | 0/TBD | Not started | - |
