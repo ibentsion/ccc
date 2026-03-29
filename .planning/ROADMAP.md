@@ -32,7 +32,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 Plans:
 - [x] 01-01-PLAN.md — JSONL loader, deterministic train/val/test splitter, shared config dataclasses
-- [ ] 01-02-PLAN.md — FIM gap creator: select N eligible lines, format as PSM tokens
+- [x] 01-02-PLAN.md — FIM gap creator: select N eligible lines, format as PSM tokens
 - [ ] 01-03-PLAN.md — CurriculumDataModule: Lightning DataModule with per-stage hybrid replay DataLoaders
 
 ### Phase 2: QLoRA Training Scaffold
@@ -44,7 +44,12 @@ Plans:
   2. A ClearML Task appears in the UI with loss curves captured via TensorBoard auto-hook and hyperparameters logged under the task
   3. A PEFT adapter directory is saved to disk after training completes and is successfully uploaded to ClearML as a named artifact
   4. The saved `.ckpt` file contains only adapter weights (not frozen base-model weights), keeping checkpoint size compact
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Training config dataclass + tokenizer with prompt masking (labels=-100 on non-middle tokens)
+- [ ] 02-02-PLAN.md — QLoRA LightningModule: 3-step init, PagedAdamW32bit, ConstantLR, PEFT adapter save
+- [ ] 02-03-PLAN.md — Training entry point with ClearML Task.init, TensorBoardLogger, artifact upload
 
 ### Phase 3: Curriculum Training Loop
 **Goal**: The full curriculum runs end-to-end — stages advance automatically, replay buffer keeps prior-stage knowledge, each stage produces its own ClearML Task and adapter artifact
@@ -74,6 +79,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Data Pipeline | 1/3 | In progress | - |
-| 2. QLoRA Training Scaffold | 0/TBD | Not started | - |
+| 2. QLoRA Training Scaffold | 0/3 | Not started | - |
 | 3. Curriculum Training Loop | 0/TBD | Not started | - |
 | 4. Evaluation | 0/TBD | Not started | - |
