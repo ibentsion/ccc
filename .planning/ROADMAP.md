@@ -73,7 +73,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Data Pipeline | 0/3 | Not started | - |
+| 1. Data Pipeline | 0/3 | Planned    |  |
 | 2. QLoRA Training Scaffold | 0/TBD | Not started | - |
 | 3. Curriculum Training Loop | 0/TBD | Not started | - |
 | 4. Evaluation | 0/TBD | Not started | - |

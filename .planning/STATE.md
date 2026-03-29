@@ -1,3 +1,19 @@
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: executing
+stopped_at: Completed 01-data-pipeline 01-02-PLAN.md (FIM gap creation)
+last_updated: "2026-03-29T10:33:28.277Z"
+last_activity: 2026-03-29
+progress:
+  total_phases: 4
+  completed_phases: 0
+  total_plans: 3
+  completed_plans: 0
+  percent: 0
+---
+
 # Project State
 
 ## Project Reference
@@ -5,20 +21,21 @@
 See: .planning/PROJECT.md (updated 2026-03-29)
 
 **Core value:** A reproducible training pipeline that produces a curriculum-trained model capable of filling in missing Python lines, with each training stage fully logged in ClearML for experiment comparison.
-**Current focus:** Phase 1 — Data Pipeline
+**Current focus:** Phase 01 — data-pipeline
 
 ## Current Position
 
-Phase: 1 of 4 (Data Pipeline)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-03-29 — Roadmap created, requirements mapped to 4 phases
+Phase: 01 (data-pipeline) — EXECUTING
+Plan: 2 of 3
+Status: Ready to execute
+Last activity: 2026-03-29
 
 Progress: [░░░░░░░░░░] 0%
 
 ## Performance Metrics
 
 **Velocity:**
+
 - Total plans completed: 0
 - Average duration: —
 - Total execution time: —
@@ -30,16 +47,20 @@ Progress: [░░░░░░░░░░] 0%
 | - | - | - | - |
 
 **Recent Trend:**
+
 - Last 5 plans: —
 - Trend: —
 
 *Updated after each plan completion*
+| Phase 01-data-pipeline P02 | 4min | 1 tasks | 4 files |
 
 ## Accumulated Context
 
 ### Decisions
 
-None yet.
+- [Phase 01-data-pipeline]: PSM (not SPM) FIM format confirmed for DeepSeek-Coder; FIM_BEGIN/FIM_HOLE/FIM_END/EOT token constants locked
+- [Phase 01-data-pipeline]: Exclusion rules for FIM gaps: def/class/blank/comment lines are ineligible — protects training signal quality
+- [Phase 01-data-pipeline]: Run detection algorithm used for select_gap_lines — handles sparse eligible line distributions correctly
 
 ### Pending Todos
 
@@ -54,6 +75,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29
-Stopped at: Roadmap and STATE created; no plans exist yet
+Last session: 2026-03-29T10:33:28.271Z
+Stopped at: Completed 01-data-pipeline 01-02-PLAN.md (FIM gap creation)
 Resume file: None
