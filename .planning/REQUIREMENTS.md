@@ -25,10 +25,10 @@
 
 ### Experiment Tracking
 
-- [ ] **EXP-01**: ClearML experiment initialized via Task.init() before any Lightning/PyTorch imports; one ClearML Task per curriculum stage
-- [ ] **EXP-02**: Training and validation loss curves logged per step via TensorBoardLogger (auto-captured by ClearML)
-- [ ] **EXP-03**: Hyperparameters (model name, LoRA config, learning rate, batch size, stage config) logged to ClearML per task
-- [ ] **EXP-04**: PEFT adapter directory uploaded to ClearML as artifact after each stage completes
+- [x] **EXP-01**: ClearML experiment initialized via Task.init() before any Lightning/PyTorch imports; one ClearML Task per curriculum stage
+- [x] **EXP-02**: Training and validation loss curves logged per step via TensorBoardLogger (auto-captured by ClearML)
+- [x] **EXP-03**: Hyperparameters (model name, LoRA config, learning rate, batch size, stage config) logged to ClearML per task
+- [x] **EXP-04**: PEFT adapter directory uploaded to ClearML as artifact after each stage completes
 
 ### Evaluation
 
@@ -82,10 +82,10 @@
 | TRAIN-05 | Phase 2 | Complete |
 | TRAIN-06 | Phase 2 | Complete |
 | TRAIN-07 | Phase 2 | Complete |
-| EXP-01 | Phase 2 | Pending |
-| EXP-02 | Phase 2 | Pending |
-| EXP-03 | Phase 2 | Pending |
-| EXP-04 | Phase 2 | Pending |
+| EXP-01 | Phase 2 | Complete |
+| EXP-02 | Phase 2 | Complete |
+| EXP-03 | Phase 2 | Complete |
+| EXP-04 | Phase 2 | Complete |
 | EVAL-01 | Phase 4 | Pending |
 | EVAL-02 | Phase 4 | Pending |
 | EVAL-03 | Phase 4 | Pending |

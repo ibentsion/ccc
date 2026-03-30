@@ -49,7 +49,7 @@ Plans:
 Plans:
 - [x] 02-01-PLAN.md — Training config dataclass + tokenizer with prompt masking (labels=-100 on non-middle tokens)
 - [x] 02-02-PLAN.md — QLoRA LightningModule: 3-step init, PagedAdamW32bit, ConstantLR, PEFT adapter save
-- [ ] 02-03-PLAN.md — Training entry point with ClearML Task.init, TensorBoardLogger, artifact upload
+- [x] 02-03-PLAN.md — Training entry point with ClearML Task.init, TensorBoardLogger, artifact upload
 
 ### Phase 3: Curriculum Training Loop
 **Goal**: The full curriculum runs end-to-end — stages advance automatically, replay buffer keeps prior-stage knowledge, each stage produces its own ClearML Task and adapter artifact
