@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-data-pipeline/01-03-PLAN.md (CurriculumDataModule + FIMDataset + HybridReplayDataset)
-last_updated: "2026-03-29T20:26:08.799Z"
-last_activity: 2026-03-29 -- Phase 02 execution started
+stopped_at: Completed 02-qlora-training-scaffold/02-02-PLAN.md (QLoRALightningModule + adapter save tests)
+last_updated: "2026-03-30T03:50:55.292Z"
+last_activity: 2026-03-30
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 6
-  completed_plans: 3
+  completed_plans: 5
   percent: 10
 ---
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-03-29)
 ## Current Position
 
 Phase: 02 (QLoRA Training Scaffold) — EXECUTING
-Plan: 1 of 3
-Status: Executing Phase 02
-Last activity: 2026-03-29 -- Phase 02 execution started
+Plan: 2 of 3
+Status: Ready to execute
+Last activity: 2026-03-30
 
 Progress: [█░░░░░░░░░] 10%
 
@@ -53,6 +53,7 @@ Progress: [█░░░░░░░░░] 10%
 
 *Updated after each plan completion*
 | Phase 01-data-pipeline P03 | 22 | 2 tasks | 3 files |
+| Phase 02-qlora-training-scaffold P02 | 5 min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -64,6 +65,10 @@ Progress: [█░░░░░░░░░] 10%
 - [Phase 01-data-pipeline]: 01-03: Code is in output field (not input) of JSONL; added _extract_code() to strip markdown fences
 - [Phase 01-data-pipeline]: 01-03: idx%4==0 deterministic replay routing (25% prior, 75% current) avoids runtime RNG in HybridReplayDataset
 - [Phase 01-data-pipeline]: 01-03: _collate_fn returns plain Python lists (not tensors); tokenization deferred to Phase 2 training loop
+- [Phase 02-qlora-training-scaffold]: device_map={"":0} used instead of device_map=auto to prevent Lightning DDP conflicts
+- [Phase 02-qlora-training-scaffold]: save_hyperparameters() NOT called; hyperparams logged in Plan 03 via ClearML task.connect()
+- [Phase 02-qlora-training-scaffold]: gradient_checkpointing_enable with use_reentrant=False to avoid reentrant autograd issues
+- [Phase 02-qlora-training-scaffold]: ConstantLR(factor=1.0, total_iters=0) implements no-decay constant LR per TRAIN-05
 
 ### Pending Todos
 
@@ -78,6 +83,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29T10:59:36.243Z
-Stopped at: Completed 01-data-pipeline/01-03-PLAN.md (CurriculumDataModule + FIMDataset + HybridReplayDataset)
+Last session: 2026-03-30T03:50:55.282Z
+Stopped at: Completed 02-qlora-training-scaffold/02-02-PLAN.md (QLoRALightningModule + adapter save tests)
 Resume file: None
