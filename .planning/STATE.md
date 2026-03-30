@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-qlora-training-scaffold/02-03-PLAN.md (training entry point + ClearML integration)
-last_updated: "2026-03-30T03:59:22.072Z"
+stopped_at: Completed 03-curriculum-training-loop/03-01-PLAN.md (multi-stage curriculum loop)
+last_updated: "2026-03-30T10:16:56.063Z"
 last_activity: 2026-03-30
 progress:
   total_phases: 4
-  completed_phases: 2
-  total_plans: 6
-  completed_plans: 6
+  completed_phases: 3
+  total_plans: 7
+  completed_plans: 7
   percent: 10
 ---
 
@@ -55,6 +55,7 @@ Progress: [█░░░░░░░░░] 10%
 | Phase 01-data-pipeline P03 | 22 | 2 tasks | 3 files |
 | Phase 02-qlora-training-scaffold P02 | 5 min | 2 tasks | 2 files |
 | Phase 02-qlora-training-scaffold P03 | 2 min | 2 tasks | 2 files |
+| Phase 03-curriculum-training-loop P01 | 8min | 1 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -73,6 +74,9 @@ Progress: [█░░░░░░░░░] 10%
 - [Phase 02-qlora-training-scaffold]: All pytorch/lightning imports inside main() so Task.init() fires before any pytorch import (EXP-01)
 - [Phase 02-qlora-training-scaffold]: collate_fn injected into CurriculumDataModule to keep data/training dependency one-directional
 - [Phase 02-qlora-training-scaffold]: enable_checkpointing=False prevents Lightning saving full quantized model; PEFT save_pretrained saves only adapter weights
+- [Phase 03-curriculum-training-loop]: All pytorch/lightning/peft imports inside main() so Task.init fires before any pytorch import (EXP-01 pattern)
+- [Phase 03-curriculum-training-loop]: Fresh QLoRALightningModule + pl.Trainer per stage ensures constant LR with no optimizer state carryover
+- [Phase 03-curriculum-training-loop]: curriculum.Task patched directly on module object in tests (not sys.modules) because from-clearml-import binds at module load time
 
 ### Pending Todos
 
@@ -87,6 +91,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-30T03:55:01.522Z
-Stopped at: Completed 02-qlora-training-scaffold/02-03-PLAN.md (training entry point + ClearML integration)
+Last session: 2026-03-30T10:16:56.053Z
+Stopped at: Completed 03-curriculum-training-loop/03-01-PLAN.md (multi-stage curriculum loop)
 Resume file: None

@@ -1,3 +1,5 @@
+from typing import List
+
 import torch
 from transformers import AutoTokenizer
 
@@ -16,7 +18,7 @@ class TokenizedCollator:
         self.tokenizer = tokenizer
         self.max_seq_length = max_seq_length
 
-    def __call__(self, batch: list[dict]) -> dict:
+    def __call__(self, batch: List[dict]) -> dict:
         fim_texts = [sample["fim_text"] for sample in batch]
         encoded = self.tokenizer(
             fim_texts,
