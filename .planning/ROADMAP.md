@@ -59,7 +59,10 @@ Plans:
   1. Training automatically advances from Stage 1 (1-line gaps) through configurable later stages without manual intervention
   2. Each curriculum stage produces a separate ClearML Task with its own loss curves and a PEFT adapter artifact
   3. Constant learning rate is maintained across all stages (no cosine decay to near-zero before hard examples appear)
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 03-01-PLAN.md — Multi-stage curriculum loop: per-stage ClearML Tasks, adapter continuity, fresh optimizer per stage
 
 ### Phase 4: Evaluation
 **Goal**: The trained model is evaluated systematically — Exact Match and Edit Similarity per stage on validation set, final test-set results logged to ClearML
@@ -80,5 +83,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Data Pipeline | 1/3 | In progress | - |
 | 2. QLoRA Training Scaffold | 1/3 | In Progress|  |
-| 3. Curriculum Training Loop | 0/TBD | Not started | - |
+| 3. Curriculum Training Loop | 0/1 | Not started | - |
 | 4. Evaluation | 0/TBD | Not started | - |
