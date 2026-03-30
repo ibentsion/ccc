@@ -17,11 +17,11 @@
 
 - [x] **TRAIN-01**: QLoRA training with DeepSeek-Coder 1.3B or 6.7B (configurable), using 4-bit NF4 quantization with double quantization enabled
 - [x] **TRAIN-02**: LoRA targets all 7 projection layers (q/k/v/o_proj, gate/up/down_proj), r=16, alpha=32
-- [ ] **TRAIN-03**: Training orchestrated via PyTorch Lightning LightningModule with correct QLoRA init sequence (from_pretrained → prepare_model_for_kbit_training → get_peft_model)
+- [x] **TRAIN-03**: Training orchestrated via PyTorch Lightning LightningModule with correct QLoRA init sequence (from_pretrained → prepare_model_for_kbit_training → get_peft_model)
 - [ ] **TRAIN-04**: Curriculum advances through configurable stages (e.g., 1-line → 2-line → 3-line gaps) within a single continuous training run
 - [x] **TRAIN-05**: Constant learning rate schedule through all curriculum stages (not cosine decay)
 - [x] **TRAIN-06**: Prompt masking applied so loss is computed only on the missing lines (not the context)
-- [ ] **TRAIN-07**: PEFT adapter checkpoint saved to disk after each curriculum stage
+- [x] **TRAIN-07**: PEFT adapter checkpoint saved to disk after each curriculum stage
 
 ### Experiment Tracking
 
@@ -77,11 +77,11 @@
 | DATA-05 | Phase 1 | Complete |
 | TRAIN-01 | Phase 2 | Complete |
 | TRAIN-02 | Phase 2 | Complete |
-| TRAIN-03 | Phase 2 | Pending |
+| TRAIN-03 | Phase 2 | Complete |
 | TRAIN-04 | Phase 3 | Pending |
 | TRAIN-05 | Phase 2 | Complete |
 | TRAIN-06 | Phase 2 | Complete |
-| TRAIN-07 | Phase 2 | Pending |
+| TRAIN-07 | Phase 2 | Complete |
 | EXP-01 | Phase 2 | Pending |
 | EXP-02 | Phase 2 | Pending |
 | EXP-03 | Phase 2 | Pending |
