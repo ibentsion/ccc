@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-qlora-training-scaffold/02-02-PLAN.md (QLoRALightningModule + adapter save tests)
-last_updated: "2026-03-30T03:50:55.292Z"
+stopped_at: Completed 02-qlora-training-scaffold/02-03-PLAN.md (training entry point + ClearML integration)
+last_updated: "2026-03-30T03:55:01.529Z"
 last_activity: 2026-03-30
 progress:
   total_phases: 4
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 6
-  completed_plans: 5
+  completed_plans: 6
   percent: 10
 ---
 
@@ -26,7 +26,7 @@ See: .planning/PROJECT.md (updated 2026-03-29)
 ## Current Position
 
 Phase: 02 (QLoRA Training Scaffold) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 Status: Ready to execute
 Last activity: 2026-03-30
 
@@ -54,6 +54,7 @@ Progress: [█░░░░░░░░░] 10%
 *Updated after each plan completion*
 | Phase 01-data-pipeline P03 | 22 | 2 tasks | 3 files |
 | Phase 02-qlora-training-scaffold P02 | 5 min | 2 tasks | 2 files |
+| Phase 02-qlora-training-scaffold P03 | 2 min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -69,6 +70,9 @@ Progress: [█░░░░░░░░░] 10%
 - [Phase 02-qlora-training-scaffold]: save_hyperparameters() NOT called; hyperparams logged in Plan 03 via ClearML task.connect()
 - [Phase 02-qlora-training-scaffold]: gradient_checkpointing_enable with use_reentrant=False to avoid reentrant autograd issues
 - [Phase 02-qlora-training-scaffold]: ConstantLR(factor=1.0, total_iters=0) implements no-decay constant LR per TRAIN-05
+- [Phase 02-qlora-training-scaffold]: All pytorch/lightning imports inside main() so Task.init() fires before any pytorch import (EXP-01)
+- [Phase 02-qlora-training-scaffold]: collate_fn injected into CurriculumDataModule to keep data/training dependency one-directional
+- [Phase 02-qlora-training-scaffold]: enable_checkpointing=False prevents Lightning saving full quantized model; PEFT save_pretrained saves only adapter weights
 
 ### Pending Todos
 
@@ -83,6 +87,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-30T03:50:55.282Z
-Stopped at: Completed 02-qlora-training-scaffold/02-02-PLAN.md (QLoRALightningModule + adapter save tests)
+Last session: 2026-03-30T03:55:01.522Z
+Stopped at: Completed 02-qlora-training-scaffold/02-03-PLAN.md (training entry point + ClearML integration)
 Resume file: None
