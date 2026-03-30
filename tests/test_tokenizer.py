@@ -1,7 +1,12 @@
 import pytest
 
-transformers = pytest.importorskip("transformers")
-from transformers import AutoTokenizer
+try:
+    import transformers
+    if not hasattr(transformers, "__version__"):
+        raise ImportError("mock transformers detected")
+    from transformers import AutoTokenizer
+except (ImportError, Exception):
+    pytest.skip("real transformers not installed", allow_module_level=True)
 
 from data.fim import FIM_BEGIN, FIM_HOLE, FIM_END, EOT
 from training.tokenizer import load_tokenizer, TokenizedCollator

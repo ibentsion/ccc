@@ -5,6 +5,12 @@ import unittest
 from unittest import mock
 import importlib
 
+import pytest
+try:
+    import torch  # noqa: F401
+except ImportError:
+    pytest.skip("torch not installed", allow_module_level=True)
+
 
 def _build_fake_transformers():
     m = types.ModuleType("transformers")
@@ -16,6 +22,7 @@ def _build_fake_transformers():
 
     m.BitsAndBytesConfig = mock.MagicMock(side_effect=_BnbConfig)
     m.AutoModelForCausalLM = mock.MagicMock()
+    m.AutoTokenizer = mock.MagicMock()
     return m
 
 
@@ -25,18 +32,19 @@ def _build_fake_peft():
     m.LoraConfig = mock.MagicMock()
     m.prepare_model_for_kbit_training = mock.MagicMock(side_effect=lambda x: x)
     m.get_peft_model = mock.MagicMock()
+    m.PeftModel = mock.MagicMock()
     return m
 
 
 def _build_fake_bnb():
-    import torch
+    import torch as _torch  # real torch is restored before this is called
 
     m = types.ModuleType("bitsandbytes")
     m.__spec__ = importlib.util.spec_from_loader("bitsandbytes", loader=None)
     optim = types.ModuleType("bitsandbytes.optim")
     optim.__spec__ = importlib.util.spec_from_loader("bitsandbytes.optim", loader=None)
 
-    class _PagedAdamW32bit(torch.optim.Optimizer):
+    class _PagedAdamW32bit(_torch.optim.Optimizer):
         def __init__(self, params, lr):
             self.lr = lr
             params_list = list(params)
@@ -63,15 +71,28 @@ def _build_fake_pl():
             return self.forward(*args, **kwargs)
 
         def parameters(self):
-            import torch
-            return iter([torch.nn.Parameter(torch.zeros(1))])
+            import torch as _t  # real torch is restored before _build_fake_pl() is called
+            return iter([_t.nn.Parameter(_t.zeros(1))])
 
         def log(self, name, value, **kwargs):
             self._logged[name] = value.item() if hasattr(value, "item") else value
 
+    class _LightningDataModule:
+        pass
+
+    loggers = types.ModuleType("pytorch_lightning.loggers")
+    loggers.__spec__ = importlib.util.spec_from_loader("pytorch_lightning.loggers", loader=None)
+    loggers.TensorBoardLogger = mock.MagicMock()
+    m.loggers = loggers
     m.LightningModule = _LightningModule
+    m.LightningDataModule = _LightningDataModule
     return m
 
+
+# Restore real torch before injecting ML mocks — test_curriculum.py may have
+# installed a minimal fake torch (no nn/zeros/optim) earlier in the session.
+import torch as _real_torch
+sys.modules["torch"] = _real_torch
 
 # Inject all mocks before any training.model import
 _tf = _build_fake_transformers()
@@ -84,6 +105,7 @@ for name, mod in [
     ("peft", _peft),
     ("bitsandbytes", _bnb),
     ("pytorch_lightning", _pl),
+    ("pytorch_lightning.loggers", _pl.loggers),
 ]:
     sys.modules.pop(name, None)
     sys.modules[name] = mod
