@@ -36,12 +36,14 @@ class CurriculumDataModule(pl.LightningDataModule):
     Args:
         config: PipelineConfig with jsonl_path, split ratios, seed, and stages list.
         batch_size: Batch size for all DataLoaders (default 8).
+        collate_fn: Optional collate function; falls back to _collate_fn if None.
     """
 
-    def __init__(self, config: PipelineConfig, batch_size: int = 8):
+    def __init__(self, config: PipelineConfig, batch_size: int = 8, collate_fn=None):
         super().__init__()
         self.config = config
         self.batch_size = batch_size
+        self.custom_collate_fn = collate_fn
         self.train_records = []
         self.val_records = []
         self.test_records = []
@@ -80,7 +82,7 @@ class CurriculumDataModule(pl.LightningDataModule):
             hybrid_ds,
             batch_size=self.batch_size,
             shuffle=False,
-            collate_fn=_collate_fn,
+            collate_fn=self.custom_collate_fn if self.custom_collate_fn else _collate_fn,
         )
 
     def val_dataloader(self, curriculum_stage: int = 1) -> DataLoader:
@@ -100,7 +102,7 @@ class CurriculumDataModule(pl.LightningDataModule):
             val_ds,
             batch_size=self.batch_size,
             shuffle=False,
-            collate_fn=_collate_fn,
+            collate_fn=self.custom_collate_fn if self.custom_collate_fn else _collate_fn,
         )
 
     def test_dataloader(self) -> DataLoader:
@@ -115,5 +117,5 @@ class CurriculumDataModule(pl.LightningDataModule):
             test_ds,
             batch_size=self.batch_size,
             shuffle=False,
-            collate_fn=_collate_fn,
+            collate_fn=self.custom_collate_fn if self.custom_collate_fn else _collate_fn,
         )
