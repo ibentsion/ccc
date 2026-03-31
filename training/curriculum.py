@@ -9,6 +9,7 @@ def main():
     from training.tokenizer import load_tokenizer, TokenizedCollator
     from data.config import PipelineConfig, StageConfig
     from data.datamodule import CurriculumDataModule
+    from training.eval_metrics import run_eval
     import pytorch_lightning as pl
     from pytorch_lightning.loggers import TensorBoardLogger
     from peft import PeftModel
@@ -95,6 +96,16 @@ def main():
         val_dl = datamodule.val_dataloader(curriculum_stage=stage_idx + 1)
         trainer.fit(model, train_dataloaders=train_dl, val_dataloaders=val_dl)
 
+        # --- Per-stage eval ---
+        eval_val_dl = datamodule.val_dataloader(curriculum_stage=stage_idx + 1)
+        ground_truths = [sample["middle"] for sample in eval_val_dl.dataset]
+        max_new_tokens = stage_cfg.max_lines * 50
+        eval_results = run_eval(model, tokenizer, eval_val_dl, ground_truths, max_new_tokens)
+        logger = task.get_logger()
+        logger.report_scalar(title="eval", series="eval_exact_match", value=eval_results["exact_match"], iteration=stage_idx + 1)
+        logger.report_scalar(title="eval", series="eval_edit_sim", value=eval_results["edit_sim"], iteration=stage_idx + 1)
+        print(f"Stage {stage_idx + 1} eval: EM={eval_results['exact_match']:.4f}, EditSim={eval_results['edit_sim']:.4f}")
+
         # --- Save adapter ---
         adapter_dir = os.path.join(train_config.output_dir, f"adapter_stage_{stage_idx + 1}")
         model.save_adapter(adapter_dir)
@@ -109,6 +120,25 @@ def main():
         # --- Close task before next stage ---
         task.close()
         prev_adapter_dir = adapter_dir
+
+    # --- Final test-set evaluation (EVAL-03) ---
+    eval_task = Task.init(
+        project_name=train_config.clearml_project,
+        task_name="eval-final",
+        auto_connect_frameworks={"tensorboard": False},
+    )
+
+    test_dl = datamodule.test_dataloader()
+    test_ground_truths = [sample["middle"] for sample in test_dl.dataset]
+    last_stage_cfg = pipeline_config.stages[-1]
+    max_new_tokens = last_stage_cfg.max_lines * 50
+    test_results = run_eval(model, tokenizer, test_dl, test_ground_truths, max_new_tokens)
+
+    eval_logger = eval_task.get_logger()
+    eval_logger.report_scalar(title="eval", series="eval_exact_match", value=test_results["exact_match"], iteration=0)
+    eval_logger.report_scalar(title="eval", series="eval_edit_sim", value=test_results["edit_sim"], iteration=0)
+    print(f"Final test eval: EM={test_results['exact_match']:.4f}, EditSim={test_results['edit_sim']:.4f}")
+    eval_task.close()
 
 
 if __name__ == "__main__":
