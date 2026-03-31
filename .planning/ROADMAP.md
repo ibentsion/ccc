@@ -72,7 +72,11 @@ Plans:
   1. Exact Match score is computed and logged to ClearML for each curriculum stage on the validation set
   2. Edit Similarity score is computed and logged to ClearML for each curriculum stage on the validation set
   3. A final evaluation run on the held-out test set completes after all curriculum stages and results appear in ClearML
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — Eval metrics module: exact_match, edit_similarity, run_eval with TDD
+- [ ] 04-02-PLAN.md — Wire eval into curriculum loop: per-stage + final test-set eval with ClearML logging
 
 ## Progress
 
@@ -84,4 +88,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Data Pipeline | 1/3 | In progress | - |
 | 2. QLoRA Training Scaffold | 1/3 | In Progress|  |
 | 3. Curriculum Training Loop | 1/1 | Complete   | 2026-03-30 |
-| 4. Evaluation | 0/TBD | Not started | - |
+| 4. Evaluation | 0/2 | Not started | - |
