@@ -88,4 +88,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Data Pipeline | 1/3 | In progress | - |
 | 2. QLoRA Training Scaffold | 1/3 | In Progress|  |
 | 3. Curriculum Training Loop | 1/1 | Complete   | 2026-03-30 |
-| 4. Evaluation | 0/2 | Not started | - |
+| 4. Evaluation | 1/2 | In Progress | - |

@@ -4,12 +4,12 @@ milestone: v1.0
 milestone_name: milestone
 status: executing
 stopped_at: Completed 03-curriculum-training-loop/03-01-PLAN.md (multi-stage curriculum loop)
-last_updated: "2026-03-30T10:16:56.063Z"
-last_activity: 2026-03-30
+last_updated: "2026-03-31T12:15:13.267Z"
+last_activity: 2026-03-31 -- Phase 04 execution started
 progress:
   total_phases: 4
   completed_phases: 3
-  total_plans: 7
+  total_plans: 9
   completed_plans: 7
   percent: 10
 ---
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-29)
 
 **Core value:** A reproducible training pipeline that produces a curriculum-trained model capable of filling in missing Python lines, with each training stage fully logged in ClearML for experiment comparison.
-**Current focus:** Phase 02 — QLoRA Training Scaffold
+**Current focus:** Phase 04 — evaluation
 
 ## Current Position
 
-Phase: 3
-Plan: Not started
-Status: Ready to execute
-Last activity: 2026-03-30
+Phase: 04 (evaluation) — EXECUTING
+Plan: 1 of 2
+Status: Executing Phase 04
+Last activity: 2026-03-31 -- Phase 04 execution started
 
 Progress: [█░░░░░░░░░] 10%
 
