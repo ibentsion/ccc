@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 03-curriculum-training-loop/03-01-PLAN.md (multi-stage curriculum loop)
-last_updated: "2026-03-31T12:15:13.267Z"
-last_activity: 2026-03-31 -- Phase 04 execution started
+stopped_at: Completed 04-evaluation/04-02-PLAN.md (eval integration into curriculum loop)
+last_updated: "2026-03-31T12:25:33.128Z"
+last_activity: 2026-03-31
 progress:
   total_phases: 4
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 9
-  completed_plans: 7
+  completed_plans: 9
   percent: 10
 ---
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-03-29)
 ## Current Position
 
 Phase: 04 (evaluation) — EXECUTING
-Plan: 1 of 2
-Status: Executing Phase 04
-Last activity: 2026-03-31 -- Phase 04 execution started
+Plan: 2 of 2
+Status: Ready to execute
+Last activity: 2026-03-31
 
 Progress: [█░░░░░░░░░] 10%
 
@@ -56,6 +56,7 @@ Progress: [█░░░░░░░░░] 10%
 | Phase 02-qlora-training-scaffold P02 | 5 min | 2 tasks | 2 files |
 | Phase 02-qlora-training-scaffold P03 | 2 min | 2 tasks | 2 files |
 | Phase 03-curriculum-training-loop P01 | 8min | 1 tasks | 3 files |
+| Phase 04-evaluation P02 | 8min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -77,6 +78,8 @@ Progress: [█░░░░░░░░░] 10%
 - [Phase 03-curriculum-training-loop]: All pytorch/lightning/peft imports inside main() so Task.init fires before any pytorch import (EXP-01 pattern)
 - [Phase 03-curriculum-training-loop]: Fresh QLoRALightningModule + pl.Trainer per stage ensures constant LR with no optimizer state carryover
 - [Phase 03-curriculum-training-loop]: curriculum.Task patched directly on module object in tests (not sys.modules) because from-clearml-import binds at module load time
+- [Phase 04-evaluation]: run_eval mocked via source-module patching (training.eval_metrics.run_eval) not patch() because lazy import binds name at main() call time
+- [Phase 04-evaluation]: eval-final ClearML Task created after stage loop with task_name=eval-final for test-set evaluation (EVAL-03)
 
 ### Pending Todos
 
@@ -91,6 +94,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-30T10:16:56.053Z
-Stopped at: Completed 03-curriculum-training-loop/03-01-PLAN.md (multi-stage curriculum loop)
+Last session: 2026-03-31T12:25:33.121Z
+Stopped at: Completed 04-evaluation/04-02-PLAN.md (eval integration into curriculum loop)
 Resume file: None

@@ -32,9 +32,9 @@
 
 ### Evaluation
 
-- [ ] **EVAL-01**: Exact Match (EM) score computed on validation set per curriculum stage, logged to ClearML
-- [ ] **EVAL-02**: Edit Similarity score computed on validation set per curriculum stage, logged to ClearML
-- [ ] **EVAL-03**: Final test set evaluation run after all curriculum stages complete, results logged to ClearML
+- [x] **EVAL-01**: Exact Match (EM) score computed on validation set per curriculum stage, logged to ClearML
+- [x] **EVAL-02**: Edit Similarity score computed on validation set per curriculum stage, logged to ClearML
+- [x] **EVAL-03**: Final test set evaluation run after all curriculum stages complete, results logged to ClearML
 
 ## v2 Requirements
 
@@ -86,9 +86,9 @@
 | EXP-02 | Phase 2 | Complete |
 | EXP-03 | Phase 2 | Complete |
 | EXP-04 | Phase 2 | Complete |
-| EVAL-01 | Phase 4 | Pending |
-| EVAL-02 | Phase 4 | Pending |
-| EVAL-03 | Phase 4 | Pending |
+| EVAL-01 | Phase 4 | Complete |
+| EVAL-02 | Phase 4 | Complete |
+| EVAL-03 | Phase 4 | Complete |
 
 **Coverage:**
 - v1 requirements: 19 total

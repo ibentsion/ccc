@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 1: Data Pipeline** - Load JSONL, create FIM-formatted gap pairs, validate PSM token format, produce reproducible train/val/test splits
 - [ ] **Phase 2: QLoRA Training Scaffold** - Single-stage training run validating Lightning + PEFT + bitsandbytes + ClearML integration end-to-end
 - [x] **Phase 3: Curriculum Training Loop** - Multi-stage curriculum with hybrid replay, stage transitions, per-stage adapter saves and ClearML artifacts (completed 2026-03-30)
-- [ ] **Phase 4: Evaluation** - Per-stage and final test-set evaluation with Exact Match, Edit Similarity, and Pass@1
+- [x] **Phase 4: Evaluation** - Per-stage and final test-set evaluation with Exact Match, Edit Similarity, and Pass@1 (completed 2026-03-31)
 
 ## Phase Details
 
@@ -75,8 +75,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 04-01-PLAN.md — Eval metrics module: exact_match, edit_similarity, run_eval with TDD
-- [ ] 04-02-PLAN.md — Wire eval into curriculum loop: per-stage + final test-set eval with ClearML logging
+- [x] 04-01-PLAN.md — Eval metrics module: exact_match, edit_similarity, run_eval with TDD
+- [x] 04-02-PLAN.md — Wire eval into curriculum loop: per-stage + final test-set eval with ClearML logging
 
 ## Progress
 
@@ -88,4 +88,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Data Pipeline | 1/3 | In progress | - |
 | 2. QLoRA Training Scaffold | 1/3 | In Progress|  |
 | 3. Curriculum Training Loop | 1/1 | Complete   | 2026-03-30 |
-| 4. Evaluation | 1/2 | In Progress | - |
+| 4. Evaluation | 2/2 | Complete   | 2026-03-31 |
