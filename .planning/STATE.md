@@ -85,6 +85,12 @@ Progress: [█░░░░░░░░░] 10%
 
 None yet.
 
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260416-czk | create uv installation and entrypoint for training | 2026-04-16 | bff03ff | [260416-czk-create-uv-installation-and-entrypoint-fo](.planning/quick/260416-czk-create-uv-installation-and-entrypoint-fo/) |
+
 ### Blockers/Concerns
 
 - Phase 2: Verify `use_reentrant=False` gradient flow is intact (check loss decreases in first 50 steps)
