@@ -1,0 +1,40 @@
+[project]
+name = "ccc"
+version = "0.1.0"
+description = "CodeComplete: curriculum-trained Python line-fill model with ClearML experiment tracking"
+requires-python = ">=3.10"
+readme = "CLAUDE.md"
+dependencies = [
+    "clearml>=2.1",
+    "transformers>=4.44",
+    "peft>=0.11",
+    "pytorch-lightning>=2.2",
+    "accelerate>=0.33",
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+cuda = [
+    "torch>=2.3",
+    "bitsandbytes>=0.43",
+]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+train = "training.curriculum:main"
+train-single = "training.train:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["training", "data"]
+
+[tool.uv]
+# Keep defaults; no index overrides needed for non-CUDA core.
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

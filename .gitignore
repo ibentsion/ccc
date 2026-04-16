@@ -6,3 +6,7 @@ __pycache__/
 python-codes-25k.jsonl
 **/worktrees/*
 venv
+.venv/
+dist/
+build/
+*.egg-info/
