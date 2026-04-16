@@ -21,11 +21,11 @@ decisions:
   - cuda_extra: torch and bitsandbytes placed in [project.optional-dependencies].cuda; however uv resolved torch as a transitive dep via pytorch-lightning even without --extra cuda — the extra still separates intentional from transitive installs
   - python_pin: 3.11 chosen as safe default satisfying >=3.10 with wheels available for all deps
   - uv_lock_committed: yes — uv.lock committed for reproducibility (94 packages)
-  - cuda_extra_deferred: --extra cuda install not validated; deferred to human checkpoint (UV-05)
+  - cuda_extra_deferred: --extra cuda install not validated at checkpoint; human verified imports and pytest (58 passed, 1 skipped) under uv-managed env
 metrics:
   duration: ~15 min
   completed: 2026-04-16
-  tasks_completed: 2
+  tasks_completed: 3
   tasks_total: 3
   files_changed: 4
 ---
@@ -68,6 +68,14 @@ uv.lock committed for reproducibility.
 
 Commit: `0548720`
 
+### Task 3: Human verification (checkpoint)
+
+All checks passed by the user:
+- `uv run pytest`: 58 passed, 1 skipped
+- Both entrypoint imports resolve correctly (`training.curriculum:main`, `training.train:main`)
+- `.venv/` confirmed present in `.gitignore`
+- `cuda` extra deferred (no CUDA machine available during verification)
+
 ## Resolution Notes
 
 - **Dep versions resolved:** All lower bounds satisfied. Actual versions landed above the floor in all cases (e.g. transformers resolved to 5.5.4 vs >=4.44 bound).
@@ -92,5 +100,7 @@ None.
 - [x] .venv/ exists
 - [x] Entrypoint smoke test passed
 - [x] Commits 76c1d22 and 0548720 exist
+- [x] Human verified: `uv run pytest` → 58 passed, 1 skipped
+- [x] Human verified: both entrypoint imports resolve under uv env
 
 ## Self-Check: PASSED
